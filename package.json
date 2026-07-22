@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/Insurmountable-dev/Farmer-Produce-Records-Management-System-In-NodeJs/issues"
   },
-  "homepage": "https://github.com/Insurmountable-dev/Farmer-Produce-Records-Management-System-In-NodeJs#readme"
+  "homepage": "https://github.com/Insurmountable-dev/Farmer-Produce-Records-Management-System-In-NodeJs#readme",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "mysql2": "^3.23.1"
+  }
 }
