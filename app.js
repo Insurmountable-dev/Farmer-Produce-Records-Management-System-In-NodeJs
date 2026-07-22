@@ -8,6 +8,7 @@ const searchFarmer = require("./services/search");
 const calculatePayments = require("./services/payments");
 const displayPendingPayments = require("./services/pending");
 const updatePaymentStatus = require("./services/updatePayment");
+const displayLargeDeliveries = require("./services/largeDeliveries");
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -65,7 +66,6 @@ function handleMenu(choice) {
     });
 
     return;
-            break;
 
        case "3":
 
@@ -75,12 +75,11 @@ function handleMenu(choice) {
 
                     showMenu();
 
-        });
+                });
 
-    });
+            });
 
-    return;
-            break;
+            return;
 
             case "4":
 
@@ -93,7 +92,6 @@ function handleMenu(choice) {
                 });
 
                 return;
-            break;
 
             case "5":
 
@@ -112,11 +110,20 @@ function handleMenu(choice) {
                 });
 
                 return;
-            break;
 
         case "6":
-            console.log("\nDisplay large deliveries");
-            break;
+
+            displayLargeDeliveries(() => {
+
+                rl.question("\nPress Enter to continue...", () => {
+
+                    showMenu();
+
+                });
+
+            });
+
+        return;
 
         case "7":
             console.log("\nGenerate daily report");
