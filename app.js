@@ -3,10 +3,14 @@ require("dotenv").config();
 const db = require("./database/db");
 const readline = require("readline");
 
+const displayFarmers = require("./services/display");
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
+
+
 
 function showMenu() {
     console.clear();
@@ -33,9 +37,15 @@ function handleMenu(choice) {
 
     switch (choice) {
 
-        case "1":
-            console.log("\nDisplay all farmer deliveries");
-            break;
+         case "1":
+                displayFarmers(() => {
+                    rl.question("\nPress Enter to continue...", () => {
+                        showMenu();
+                    });
+                });
+
+                return;
+                break;
 
         case "2":
             console.log("\nSearch for a farmer");
@@ -80,6 +90,7 @@ function handleMenu(choice) {
     });
 
 }
+
 
 db.connect((err) => {
 
