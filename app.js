@@ -9,6 +9,7 @@ const calculatePayments = require("./services/payments");
 const displayPendingPayments = require("./services/pending");
 const updatePaymentStatus = require("./services/updatePayment");
 const displayLargeDeliveries = require("./services/largeDeliveries");
+const generateDailyReport = require("./services/dailyReport");
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -125,9 +126,19 @@ function handleMenu(choice) {
 
         return;
 
-        case "7":
-            console.log("\nGenerate daily report");
-            break;
+       case "7":
+
+            generateDailyReport(() => {
+
+                rl.question("\nPress Enter to continue...", () => {
+
+                    showMenu();
+
+                });
+
+            });
+
+            return;
 
         case "8":
             console.log("\nSave updated records");
