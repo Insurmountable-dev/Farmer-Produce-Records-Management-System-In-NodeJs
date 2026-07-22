@@ -5,6 +5,7 @@ const readline = require("readline");
 
 const displayFarmers = require("./services/display");
 const searchFarmer = require("./services/search");
+const calculatePayments = require("./services/payments");
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -64,8 +65,19 @@ function handleMenu(choice) {
     return;
             break;
 
-        case "3":
-            console.log("\nCalculate farmer payments");
+       case "3":
+
+            calculatePayments(() => {
+
+                rl.question("\nPress Enter to continue...", () => {
+
+                    showMenu();
+
+        });
+
+    });
+
+    return;
             break;
 
         case "4":
