@@ -7,6 +7,7 @@ const displayFarmers = require("./services/display");
 const searchFarmer = require("./services/search");
 const calculatePayments = require("./services/payments");
 const displayPendingPayments = require("./services/pending");
+const updatePaymentStatus = require("./services/updatePayment");
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -94,8 +95,23 @@ function handleMenu(choice) {
                 return;
             break;
 
-        case "5":
-            console.log("\nUpdate payment status");
+            case "5":
+
+                rl.question("\nEnter Farmer Number: ", (farmerNumber) => {
+
+                    updatePaymentStatus(farmerNumber, () => {
+
+                        rl.question("\nPress Enter to continue...", () => {
+
+                            showMenu();
+
+                        });
+
+                    });
+
+                });
+
+                return;
             break;
 
         case "6":
