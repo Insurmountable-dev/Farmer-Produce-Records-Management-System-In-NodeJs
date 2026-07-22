@@ -4,6 +4,7 @@ const db = require("./database/db");
 const readline = require("readline");
 
 const displayFarmers = require("./services/display");
+const searchFarmer = require("./services/search");
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -48,7 +49,19 @@ function handleMenu(choice) {
                 break;
 
         case "2":
-            console.log("\nSearch for a farmer");
+             rl.question("\nEnter Farmer Number: ", (farmerNumber) => {
+
+                searchFarmer(farmerNumber, () => {
+
+                    rl.question("\nPress Enter to continue...", () => {
+                        showMenu();
+             });
+
+        });
+
+    });
+
+    return;
             break;
 
         case "3":

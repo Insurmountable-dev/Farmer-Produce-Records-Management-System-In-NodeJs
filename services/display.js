@@ -15,6 +15,8 @@ function displayFarmers(callback) {
 
         console.table(results);
 
+
+
         callback();
 
     });
